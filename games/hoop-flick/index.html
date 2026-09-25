@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<link rel="icon" href="data:,">
+<title>Hoop Flick</title>
+<style>
+  html,body{margin:0;height:100%;overflow:hidden;background:#6d9dc5;touch-action:none;overscroll-behavior:none}
+  canvas{display:block;}
+  #fx{pointer-events:none}
+  :root{--font:"Impact","Arial Black",sans-serif;--ink:#1d1d1d;--panel:#fff8f0;--btn:#e76f51;--btnInk:#fff;--btnShadow:#1d1d1d;--btnBorder:3px solid #1d1d1d;--panelBorder:4px solid #1d1d1d;--panelShadow:0 8px 0 #1d1d1d;--adBtn:#ffd166;--accent:#e76f51;--pill:rgba(29,29,29,.8);--radius:10px;--btnRadius:8px;--logo:#fff;--logo2:#e76f51;--logoShadow:0 6px 0 #1d1d1d;--subInk:#fff}
+  .kit-btn.ad{color:#1d1d1d}
+  .hfhud{position:absolute;left:50%;top:58px;transform:translateX(-50%);display:flex;gap:10px;pointer-events:none;align-items:center}
+  .hfhud .sb{background:#1d1d1d;color:#ffd166;border-radius:8px;padding:2px 12px;text-align:center;font-family:"Impact","Arial Black",sans-serif}
+  .hfhud .sb span{display:block;font-size:11px;color:#fff;letter-spacing:2px}.hfhud .sb b{font-size:28px;font-weight:400}
+  .hfhud .t b{color:#80ed99}.hfhud .low b{color:#ff4d6d}.hfhud .fire{font:28px "Impact";color:#ff9f1c;text-shadow:0 2px 0 #1d1d1d}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<script src="./lib/kit.js"></script>
+<script src="./game.js"></script>
+</body>
+</html>
