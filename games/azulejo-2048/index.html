@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<link rel="icon" href="data:,">
+<title>Azulejo 2048</title>
+<style>
+  html,body{margin:0;height:100%;overflow:hidden;background:#e9e3d3;touch-action:none;overscroll-behavior:none}
+  canvas{display:block}
+  :root{--font:Georgia,serif;--ink:#1d2a44;--panel:#f4f1e8;--btn:#1f4fa3;--btnInk:#fff;--btnShadow:#0f2a5c;--btnBorder:2px solid #0f2a5c;--panelBorder:4px solid #1f4fa3;--panelShadow:0 0 0 6px #f4f1e8,0 0 0 9px #1f4fa3,0 14px 30px rgba(0,0,0,.35);--adBtn:#e0a526;--accent:#1f4fa3;--pill:rgba(31,79,163,.9);--radius:10px;--btnRadius:10px}
+  .kit-btn.ad{color:#1d2a44}
+  .hud{position:absolute;left:50%;transform:translateX(-50%);display:flex;gap:8px;pointer-events:none;width:min(560px,calc(100% - 24px))}
+  .box{flex:1;background:#1f4fa3;color:#fff;border-radius:10px;padding:6px 8px;text-align:center;box-shadow:0 4px 0 #0f2a5c;display:flex;flex-direction:column}
+  .box.mid{flex:1.6;background:#f4f1e8;color:#1d2a44;box-shadow:0 4px 0 #bfb49a}
+  .box small{font-size:12px;opacity:.85;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .box b{font-size:22px}
+  .pwbar{position:absolute;left:50%;transform:translateX(-50%);display:flex;gap:8px;pointer-events:auto;width:min(560px,calc(100% - 24px))}
+  .pw{flex:1;border:2px solid #0f2a5c;background:#f4f1e8;border-radius:12px;padding:6px 2px;font:700 12px Georgia;color:#1d2a44;cursor:pointer;display:flex;flex-direction:column;align-items:center;position:relative;box-shadow:0 4px 0 #0f2a5c}
+  .pw:active{transform:translateY(3px);box-shadow:0 1px 0 #0f2a5c}
+  .pw .pi{font-size:24px;line-height:1}
+  .pw .pc{position:absolute;top:-8px;right:-6px;background:#e0a526;border:2px solid #0f2a5c;border-radius:10px;min-width:22px;font-size:13px;padding:0 4px}
+  .pw.empty .pc{background:#7ee07e}
+  .pw.on{background:#e0a526}
+  .menu{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;pointer-events:auto;padding:70px 16px 16px}
+  .logo{text-align:center}
+  .logo .lt{display:flex;gap:6px;justify-content:center;margin-bottom:6px}
+  .logo .lt img{width:clamp(48px,12vw,84px);height:clamp(48px,12vw,84px);transform:rotate(-4deg);box-shadow:0 5px 0 rgba(0,0,0,.2);border-radius:8px}
+  .logo .lt img:nth-child(2n){transform:rotate(5deg) translateY(6px)}
+  .logo h1{margin:0;font:900 clamp(44px,10vw,86px)/.9 Georgia,serif;color:#1f4fa3;text-shadow:0 4px 0 #f4f1e8,0 7px 0 #bfb49a}
+  .logo h1 span{color:#e0a526;-webkit-text-stroke:2px #1f4fa3}
+  .mrow{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+  .mrow .kit-btn{background:#f4f1e8;color:#1d2a44}
+  .lvgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:8px}
+  .lv{border:2px solid #1f4fa3;border-radius:10px;background:#fff;font:inherit;padding:6px 2px;display:flex;flex-direction:column;align-items:center;cursor:pointer;color:#1d2a44}
+  .lv b{font-size:20px}.lv small{font-size:11px;opacity:.7}.lv i{color:#e0a526;font-style:normal;min-height:16px}
+  .lv.cur{background:#e0a526;animation:kitPulse 1.2s infinite}
+  .lv.lock{opacity:.35}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<script src="./lib/kit.js"></script>
+<script src="./game.js"></script>
+</body>
+</html>
