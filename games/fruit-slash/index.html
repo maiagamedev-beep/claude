@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<link rel="icon" href="data:,">
+<title>Fruit Slash</title>
+<style>
+  html,body{margin:0;height:100%;overflow:hidden;background:#8b5a2b;touch-action:none;overscroll-behavior:none}
+  canvas{display:block;}
+  #fx{pointer-events:none}
+  :root{--font:"Arial Black","Segoe UI",sans-serif;--ink:#3b2412;--panel:#fff4e0;--btn:#ffd166;--btnInk:#3b2412;--btnShadow:#6b4423;--btnBorder:3px solid #3b2412;--panelBorder:4px solid #3b2412;--panelShadow:0 10px 0 #3b2412;--adBtn:#8ac926;--accent:#e63946;--pill:rgba(0,0,0,.4);--radius:18px;--btnRadius:12px;--logo:#ffd166;--logo2:#e63946;--logoShadow:0 6px 0 #3b2412;--subInk:#fff4e0}
+  .fshud{position:absolute;left:14px;right:14px;top:58px;display:flex;justify-content:space-between;pointer-events:none;font-family:"Arial Black",sans-serif}
+  .fshud .sc{font-size:44px;color:#ffd166;-webkit-text-stroke:2px #3b2412;text-shadow:0 4px 0 #3b2412}
+  .fshud .rt{font-size:30px;color:#fff;text-shadow:0 3px 0 #3b2412}.fshud .rt i{font-style:normal;color:rgba(255,255,255,.35);margin-left:4px}.fshud .rt i.x{color:#ff4d6d}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<script src="./lib/kit.js"></script>
+<script src="./game.js"></script>
+</body>
+</html>
