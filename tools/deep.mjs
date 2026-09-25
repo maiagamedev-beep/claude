@@ -19,7 +19,8 @@ const end = Date.now() + secs * 1000;
 let shot = 0;
 while (Date.now() < end) {
   if (keys.length && Math.random() < 0.6) await page.keyboard.press(keys[Math.floor(Math.random() * keys.length)]);
-  else { await page.mouse.click(30 + Math.random() * (vp.width - 60), 90 + Math.random() * (vp.height - 180)); }
+  else if (Math.random() < 0.5) { await page.mouse.click(30 + Math.random() * (vp.width - 60), 90 + Math.random() * (vp.height - 180)); }
+  else { await page.mouse.move(30 + Math.random() * (vp.width - 60), vp.height * (0.5 + Math.random() * 0.45)); await page.mouse.down(); for (let k = 1; k <= 5; k++) await page.mouse.move(30 + Math.random() * (vp.width - 60), 90 + Math.random() * (vp.height - 180)); await page.mouse.up(); }
   if (process.env.CLICKALL) { for (const sel of process.env.CLICKALL.split(',')) { const el = await page.$(sel); if (el && Math.random() < 0.3) await el.click().catch(() => {}); } }
   await page.waitForTimeout(120);
   if (Date.now() > end - secs * 1000 + (shot + 1) * (secs * 1000 / 3)) { shot++; await page.screenshot({ path: `${root}tools/shots/${g}-deep${shot}.png` }); }

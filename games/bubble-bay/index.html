@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<link rel="icon" href="data:,">
+<title>Bubble Bay</title>
+<style>
+  html,body{margin:0;height:100%;overflow:hidden;background:#2a7fb8;touch-action:none;overscroll-behavior:none}
+  canvas{display:block;}
+  #fx{pointer-events:none}
+  :root{--font:"Trebuchet MS","Segoe UI",sans-serif;--ink:#1b3a5b;--panel:#eefaff;--btn:#ffc93c;--btnInk:#1b3a5b;--btnShadow:#1b3a5b;--btnBorder:3px solid #1b3a5b;--panelBorder:3px solid #1b3a5b;--panelShadow:0 8px 0 #1b3a5b;--adBtn:#4ecdc4;--accent:#ff5e7e;--pill:rgba(27,58,91,.75);--radius:26px;--btnRadius:999px;--logo:#fff;--logo2:#ffc93c;--logoShadow:0 6px 0 #1b3a5b;--subInk:#fff}
+  .bbar{position:absolute;left:8px;bottom:12px;display:flex;flex-direction:column;gap:8px;pointer-events:auto}
+  .bo{width:48px;height:48px;border-radius:50%;border:3px solid #1b3a5b;background:#eefaff;font-size:22px;cursor:pointer;position:relative;box-shadow:0 4px 0 #1b3a5b}
+  .bo i{position:absolute;top:-6px;right:-6px;background:#ff5e7e;color:#fff;border-radius:10px;font:900 11px sans-serif;padding:1px 5px;font-style:normal}
+
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<script src="./lib/kit.js"></script>
+<script src="./game.js"></script>
+</body>
+</html>
