@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<link rel="icon" href="data:,">
+<title>Deep Mine Tycoon</title>
+<style>
+  html,body{margin:0;height:100%;overflow:hidden;background:#8d6e63;touch-action:none;overscroll-behavior:none}
+  canvas{display:block;}
+  #fx{pointer-events:none}
+  :root{--font:"Trebuchet MS","Segoe UI",sans-serif;--ink:#3e2723;--panel:#fff8e1;--btn:#fbc02d;--btnInk:#3e2723;--btnShadow:#3e2723;--btnBorder:3px solid #3e2723;--panelBorder:4px solid #3e2723;--panelShadow:0 8px 0 #3e2723;--adBtn:#81c784;--accent:#d84315;--pill:rgba(62,39,35,.85);--radius:12px;--btnRadius:10px;--logo:#fbc02d;--logo2:#fff8e1;--logoShadow:0 6px 0 #3e2723;--subInk:#fff8e1;--menuBg:rgba(62,39,35,.35)}
+  .dmside{position:absolute;left:8px;bottom:8px;right:8px;display:flex;flex-direction:column;align-items:flex-start;gap:6px;pointer-events:none}
+  .dmside .rate{background:rgba(62,39,35,.85);color:#ffd54f;font-weight:900;padding:4px 10px;border-radius:10px}
+  .dmside .btns{display:flex;gap:6px;flex-wrap:wrap;pointer-events:auto}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<script src="./lib/kit.js"></script>
+<script src="./game.js"></script>
+</body>
+</html>
