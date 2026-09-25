@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<link rel="icon" href="data:,">
+<title>Helix Drop</title>
+<style>
+  html,body{margin:0;height:100%;overflow:hidden;background:#ffe5d9;touch-action:none;overscroll-behavior:none}
+  canvas{display:block;position:absolute;left:0;top:0;}
+  #fx{pointer-events:none}
+  :root{--font:"Segoe UI","Helvetica Neue",sans-serif;--ink:#333;--panel:#fff;--btn:#ff4f5e;--btnInk:#fff;--btnShadow:#b3283a;--btnBorder:0;--panelBorder:0;--panelShadow:0 18px 40px rgba(0,0,0,.2);--adBtn:#2ec4b6;--accent:#ff4f5e;--pill:rgba(0,0,0,.35);--radius:24px;--btnRadius:999px;--logo:#ff4f5e;--logo2:#333;--logoShadow:0 4px 0 #fff;--subInk:#333}
+  .kit-btn.ad{color:#fff}
+  .hx-hud{position:absolute;left:50%;top:60px;transform:translateX(-50%);display:flex;align-items:center;gap:8px;pointer-events:none;font:800 16px "Segoe UI",sans-serif}
+  .hx-hud span{width:34px;height:34px;border-radius:50%;background:#ff4f5e;color:#fff;display:flex;align-items:center;justify-content:center}
+  .hx-hud span+div+span{background:#fff;color:#333}
+  .hx-hud .bar{width:min(220px,50vw);height:12px;border-radius:6px;background:rgba(0,0,0,.12);overflow:hidden}.hx-hud .bar i{display:block;height:100%;background:#ff4f5e}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<canvas id="fx"></canvas>
+<script src="./lib/three.min.js"></script>
+<script src="./lib/kit.js"></script>
+<script src="./game.js"></script>
+</body>
+</html>

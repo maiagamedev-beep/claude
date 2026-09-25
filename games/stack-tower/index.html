@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<link rel="icon" href="data:,">
+<title>Stack Tower</title>
+<style>
+  html,body{margin:0;height:100%;overflow:hidden;background:#fbd3e9;touch-action:none;overscroll-behavior:none}
+  canvas{display:block;position:absolute;left:0;top:0;}
+  #fx{pointer-events:none}
+  :root{--font:"Avenir Next","Segoe UI",sans-serif;--ink:#333;--panel:rgba(255,255,255,.95);--btn:#fff;--btnInk:#333;--btnShadow:rgba(0,0,0,.2);--btnBorder:0;--panelBorder:0;--panelShadow:0 20px 50px rgba(0,0,0,.25);--adBtn:#9be7c4;--accent:#ff7eb3;--pill:rgba(255,255,255,.35);--pillInk:#333;--radius:28px;--btnRadius:999px;--logo:#fff;--logo2:#fff;--logoShadow:0 4px 20px rgba(0,0,0,.2);--subInk:#fff;--scrim:rgba(255,255,255,.25)}
+  .st-hud{position:absolute;left:0;right:0;top:12%;text-align:center;color:#fff;pointer-events:none;text-shadow:0 3px 14px rgba(0,0,0,.2)}
+  .st-hud b{display:block;font:200 clamp(60px,14vw,110px)/1 "Avenir Next","Segoe UI",sans-serif}
+  .st-hud small{font-weight:700;letter-spacing:2px;text-transform:uppercase}
+  .kit-logo{font-weight:300!important;letter-spacing:6px!important;text-transform:uppercase}
+  body{transition:background .6s}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<canvas id="fx"></canvas>
+<script src="./lib/three.min.js"></script>
+<script src="./lib/kit.js"></script>
+<script src="./game.js"></script>
+</body>
+</html>
