@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<link rel="icon" href="data:,">
+<title>Arrow Hero</title>
+<style>
+  html,body{margin:0;height:100%;overflow:hidden;background:#1d1d1d;touch-action:none;overscroll-behavior:none}
+  canvas{display:block;}
+  #fx{pointer-events:none}
+  :root{--font:"Trebuchet MS","Segoe UI",sans-serif;--ink:#1d1d1d;--panel:#fdf0d5;--btn:#2a9d8f;--btnInk:#fff;--btnShadow:#1d4e47;--btnBorder:0;--panelBorder:4px solid #264653;--panelShadow:0 10px 0 #264653;--adBtn:#e9c46a;--accent:#e76f51;--pill:rgba(0,0,0,.5);--radius:16px;--btnRadius:12px;--logo:#e9c46a;--logo2:#2a9d8f;--logoShadow:0 6px 0 #000;--subInk:#fdf0d5}
+  .kit-btn.ad{color:#1d1d1d}
+  .ahsk{display:flex;flex-direction:column;gap:8px}
+  .ahsk .sk{display:grid;grid-template-columns:44px 1fr;grid-template-rows:auto auto;column-gap:10px;text-align:left;border:3px solid #264653;border-radius:12px;background:#fff;padding:8px;cursor:pointer;font:inherit;color:#1d1d1d}
+  .ahsk .sk i{grid-row:span 2;font-style:normal;font-size:28px;display:flex;align-items:center;justify-content:center;background:#e9c46a;border-radius:10px}
+  .ahsk .sk small{opacity:.7}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<script src="./lib/kit.js"></script>
+<script src="./game.js"></script>
+</body>
+</html>
