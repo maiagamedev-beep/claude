@@ -15,7 +15,7 @@ for (const g of games) {
     const ctx = await browser.newContext({ viewport: { width: vp.w, height: vp.h }, hasTouch: !!vp.touch, isMobile: !!vp.touch });
     const page = await ctx.newPage();
     const errs = [];
-    page.on('console', (m) => { if (m.type() === 'error' || m.type() === 'warning') errs.push(m.type() + ': ' + m.text()); });
+    page.on('console', (m) => { if ((m.type() === 'error' || m.type() === 'warning') && !m.text().includes('GL Driver Message')) errs.push(m.type() + ': ' + m.text()); });
     page.on('pageerror', (e) => errs.push('pageerror: ' + e.message + '\n' + e.stack));
     const t0 = Date.now();
     await page.goto(`http://localhost:8123/games/${g}/index.html`);

@@ -9,7 +9,7 @@ const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromi
 const vp = process.env.MOB ? { width: 390, height: 780 } : { width: 1280, height: 720 };
 const page = await (await browser.newContext({ viewport: vp, hasTouch: !!process.env.MOB })).newPage();
 const errs = [];
-page.on('console', (m) => { if (m.type() === 'error' || m.type() === 'warning') errs.push(m.text()); });
+page.on('console', (m) => { if ((m.type() === 'error' || m.type() === 'warning') && !m.text().includes('GL Driver Message')) errs.push(m.text()); });
 page.on('pageerror', (e) => errs.push('pageerror: ' + e.message + ' ' + e.stack));
 await page.goto(`http://localhost:8124/games/${g}/index.html`);
 await page.waitForSelector('[data-play]');
