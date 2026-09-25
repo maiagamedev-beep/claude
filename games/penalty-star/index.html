@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<link rel="icon" href="data:,">
+<title>Penalty Star</title>
+<style>
+  html,body{margin:0;height:100%;overflow:hidden;background:#1b263b;touch-action:none;overscroll-behavior:none}
+  canvas{display:block;}
+  #fx{pointer-events:none}
+  :root{--font:"Arial Black","Segoe UI",sans-serif;--ink:#1d1d1d;--panel:#fff;--btn:#ffd60a;--btnInk:#1d1d1d;--btnShadow:#1d1d1d;--btnBorder:3px solid #1d1d1d;--panelBorder:3px solid #1d1d1d;--panelShadow:0 8px 0 #1d1d1d;--adBtn:#06d6a0;--accent:#2a9d8f;--pill:rgba(0,0,0,.5);--radius:16px;--btnRadius:12px;--logo:#fff;--logo2:#ffd60a;--logoShadow:0 6px 0 #1d1d1d;--subInk:#fff}
+  .pshud{position:absolute;left:12px;bottom:12px;background:rgba(0,0,0,.55);color:#fff;border-radius:12px;padding:6px 12px;pointer-events:none;font:700 14px "Trebuchet MS",sans-serif;min-width:230px;text-align:center}
+  .pshud .row{display:flex;align-items:center;gap:8px;justify-content:space-between}.pshud .row span{width:12px;height:12px;border-radius:50%}
+  .pshud em{display:flex;gap:4px}.pshud i{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.25)}.pshud i.g{background:#06d6a0}.pshud i.x{background:#ef476f}
+  .pshud p{margin:4px 0 0;color:#ffd60a;animation:kitPulse 1s infinite}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<script src="./lib/kit.js"></script>
+<script src="./game.js"></script>
+</body>
+</html>
