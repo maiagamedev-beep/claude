@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<link rel="icon" href="data:,">
+<title>Noodle Arena</title>
+<style>
+  html,body{margin:0;height:100%;overflow:hidden;background:#e9dcbc;touch-action:none;overscroll-behavior:none}
+  canvas{display:block;cursor:crosshair}
+  :root{--font:"Trebuchet MS","Segoe UI",sans-serif;--ink:#2b2d42;--panel:#fff6e5;--btn:#ffe066;--btnInk:#2b2d42;--btnShadow:#2b2d42;--btnBorder:3px solid #2b2d42;--panelBorder:3px solid #2b2d42;--panelShadow:0 8px 0 #2b2d42;--adBtn:#70c1b3;--accent:#f25f5c;--pill:#2b2d42;--radius:22px;--btnRadius:18px}
+  .menu{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;pointer-events:auto;padding:70px 16px 16px;background:radial-gradient(circle at 50% 45%,rgba(255,246,229,.85),rgba(255,246,229,.2) 60%)}
+  .menu h1{margin:0;display:flex;flex-direction:column;align-items:center;line-height:.85;font:900 clamp(52px,12vw,112px) "Trebuchet MS",sans-serif;letter-spacing:-2px}
+  .menu h1 span{color:#f25f5c;text-shadow:0 6px 0 #2b2d42;transform:rotate(-3deg)}
+  .menu h1 span+span{color:#70c1b3;transform:rotate(2deg)}
+  .best{margin:0;font-weight:800;color:#247ba0}
+  .mrow{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+  .lb{position:absolute;right:10px;top:62px;background:rgba(255,246,229,.85);border:2px solid #2b2d42;border-radius:14px;padding:8px 10px;font-size:13px;min-width:150px;pointer-events:none}
+  .lb b{display:block;margin-bottom:4px;color:#f25f5c}
+  .lb div{display:flex;justify-content:space-between;gap:10px}
+  .lb .me{color:#247ba0;font-weight:900}
+  .stat{position:absolute;left:50%;transform:translateX(-50%);bottom:14px;background:rgba(43,45,66,.8);color:#fff6e5;padding:6px 14px;border-radius:14px;font-size:15px;pointer-events:none;white-space:nowrap}
+  .boostbtn{position:absolute;right:18px;bottom:60px;width:76px;height:76px;border-radius:50%;border:4px solid #2b2d42;background:#ffe066;font-size:34px;pointer-events:auto;box-shadow:0 5px 0 #2b2d42;touch-action:none}
+  .boostbtn:active{transform:translateY(3px);box-shadow:0 2px 0 #2b2d42;background:#f25f5c}
+  @media (max-width:520px){.lb{font-size:11px;min-width:120px;top:54px;padding:6px}}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<script src="./lib/kit.js"></script>
+<script src="./game.js"></script>
+</body>
+</html>
