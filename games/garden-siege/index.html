@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<link rel="icon" href="data:,">
+<title>Garden Siege</title>
+<style>
+  html,body{margin:0;height:100%;overflow:hidden;background:#5d7d3a;touch-action:none;overscroll-behavior:none}
+  canvas{display:block}
+  :root{--font:"Trebuchet MS",Verdana,sans-serif;--ink:#3b2b24;--panel:#f6ecd6;--btn:#f2d24b;--btnInk:#3b2b24;--btnShadow:#8a5a3c;--btnBorder:0;--panelBorder:0;--panelShadow:6px 8px 0 rgba(40,30,10,.35);--adBtn:#9ad86f;--accent:#d9674f;--pill:rgba(59,43,36,.85);--radius:4px;--btnRadius:4px}
+  .kit-panel{clip-path:polygon(0 2%,3% 0,20% 1.5%,40% 0,60% 1%,80% 0,97% 1.2%,100% 0,99% 30%,100% 60%,99% 98%,96% 100%,70% 99%,40% 100%,10% 99%,0 100%,1% 70%,0 40%)}
+  .menu{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;pointer-events:auto;padding:70px 16px 16px;background:rgba(40,60,20,.35)}
+  .menu h1{margin:0;display:flex;flex-direction:column;align-items:center;line-height:.9;font:900 clamp(50px,11vw,104px) "Trebuchet MS",sans-serif}
+  .menu h1 span{color:#f6ecd6;padding:0 18px;background:#6cbf4a;transform:rotate(-3deg);box-shadow:6px 8px 0 rgba(40,30,10,.35)}
+  .menu h1 span+span{background:#d9674f;transform:rotate(2deg);margin-top:8px}
+  .sub{margin:0;color:#f6ecd6;font-weight:800;font-size:18px;text-shadow:0 2px 0 rgba(0,0,0,.4)}
+  .mrow{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+  .bar{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 10px;pointer-events:auto;background:linear-gradient(transparent,rgba(40,30,10,.55));flex-wrap:wrap}
+  .binfo{display:flex;gap:10px;font-weight:900;font-size:18px;color:#fff;text-shadow:0 2px 0 rgba(0,0,0,.5)}
+  .binfo span{background:rgba(59,43,36,.7);padding:4px 10px;border-radius:4px}
+  .bacts{display:flex;gap:6px;flex-wrap:wrap}
+  .kit-btn.go{background:#d9674f;color:#fff}
+  .pop{position:absolute;display:flex;gap:6px;background:#f6ecd6;padding:8px;box-shadow:5px 7px 0 rgba(40,30,10,.35);pointer-events:auto;flex-wrap:wrap;max-width:min(94vw,380px);align-items:center;z-index:5}
+  .tb{border:0;background:#fff;padding:4px;display:flex;flex-direction:column;align-items:center;cursor:pointer;font:800 13px "Trebuchet MS";color:#3b2b24;box-shadow:0 3px 0 #c9a46a}
+  .tb.poor{opacity:.5}.tb.lock{opacity:.35;filter:grayscale(1)}
+  .tinfo{display:flex;flex-direction:column;min-width:160px;font-size:14px}.tinfo small{opacity:.8}
+  .lvgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(56px,1fr));gap:8px}
+  .lv{border:0;background:#fff;font:inherit;padding:6px 2px;display:flex;flex-direction:column;align-items:center;cursor:pointer;color:#3b2b24;box-shadow:0 3px 0 #c9a46a}
+  .lv b{font-size:20px}.lv i{color:#e8a33d;font-style:normal;min-height:16px}
+  .lv.cur{background:#f2d24b}.lv.lock{opacity:.35}
+  @media (max-width:520px){.binfo{font-size:15px;gap:5px}.binfo span{padding:3px 6px}}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<script src="./lib/kit.js"></script>
+<script src="./game.js"></script>
+</body>
+</html>
