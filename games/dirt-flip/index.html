@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<link rel="icon" href="data:,">
+<title>Dirt Flip</title>
+<style>
+  html,body{margin:0;height:100%;overflow:hidden;background:#ffcf99;touch-action:none;overscroll-behavior:none}
+  canvas{display:block;}
+  #fx{pointer-events:none}
+  :root{--font:"Arial Black","Segoe UI",sans-serif;--ink:#1d1d1d;--panel:#fff8ee;--btn:#e63946;--btnInk:#fff;--btnShadow:#1d1d1d;--btnBorder:3px solid #1d1d1d;--panelBorder:3px solid #1d1d1d;--panelShadow:0 8px 0 #1d1d1d;--adBtn:#ffd60a;--accent:#e63946;--pill:rgba(29,29,29,.8);--radius:10px;--btnRadius:8px;--logo:#ffd60a;--logo2:#e63946;--logoShadow:0 6px 0 #1d1d1d;--subInk:#1d1d1d;--hudInk:#1d1d1d;--hudShadow:0 2px 0 #fff}
+  .kit-btn.ad{color:#1d1d1d}
+  .dfpad{position:absolute;left:0;right:0;bottom:14px;display:flex;justify-content:space-between;padding:0 12px;pointer-events:none}
+  .db{pointer-events:auto;width:72px;height:72px;border-radius:50%;border:3px solid #1d1d1d;background:rgba(255,255,255,.75);font:900 22px "Arial Black",sans-serif;color:#1d1d1d;touch-action:none;box-shadow:0 4px 0 #1d1d1d}
+  .db.on{background:#ffd60a;transform:translateY(3px);box-shadow:0 1px 0 #1d1d1d}
+  .db.gas{background:rgba(128,237,153,.85)}.db.brake{background:rgba(255,93,115,.8)}
+  .db.left{margin-right:auto;margin-left:10px}.db.right{margin-right:10px}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<script src="./lib/kit.js"></script>
+<script src="./game.js"></script>
+</body>
+</html>
