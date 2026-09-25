@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<link rel="icon" href="data:,">
+<title>Pulse Dash</title>
+<style>
+  html,body{margin:0;height:100%;overflow:hidden;background:#1a1033;touch-action:none;overscroll-behavior:none}
+  canvas{display:block;}
+  #fx{pointer-events:none}
+  :root{--font:"Arial Black","Segoe UI",sans-serif;--ink:#111;--panel:#f5f3ff;--btn:#ffd60a;--btnInk:#111;--btnShadow:#111;--btnBorder:3px solid #111;--panelBorder:3px solid #111;--panelShadow:0 8px 0 #111;--adBtn:#00f5d4;--accent:#ff006e;--pill:rgba(0,0,0,.4);--radius:8px;--btnRadius:6px;--logo:#ffd60a;--logo2:#00f5d4;--logoShadow:0 6px 0 #111;--subInk:#fff}
+  .pdhud{position:absolute;left:50%;top:60px;transform:translateX(-50%);text-align:center;pointer-events:none;color:#fff;font-family:"Arial Black",sans-serif}
+  .pdhud .bar{width:min(420px,70vw);height:12px;border:2px solid #fff;border-radius:8px;overflow:hidden}.pdhud .bar i{display:block;height:100%;background:#fff}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<script src="./lib/kit.js"></script>
+<script src="./game.js"></script>
+</body>
+</html>
