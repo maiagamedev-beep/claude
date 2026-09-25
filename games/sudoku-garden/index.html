@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<link rel="icon" href="data:,">
+<title>Sudoku Garden</title>
+<style>
+  html,body{margin:0;height:100%;overflow:hidden;background:#fdf6ec;touch-action:none;overscroll-behavior:none}
+  canvas{display:block;}
+  #fx{pointer-events:none}
+  :root{--font:"Avenir Next","Segoe UI",sans-serif;--ink:#3d2c4f;--panel:#fffdf8;--btn:#b388eb;--btnInk:#fff;--btnShadow:#7b4fb0;--btnBorder:0;--panelBorder:0;--panelShadow:0 18px 40px rgba(61,44,79,.25);--adBtn:#f7a8b8;--accent:#b388eb;--pill:rgba(61,44,79,.6);--radius:22px;--btnRadius:14px;--logo:#7b4fb0;--logo2:#f28fa8;--logoShadow:0 4px 0 #fff;--subInk:#3d2c4f}
+  .kit-btn.ad{color:#3d2c4f}
+  .sgpad{position:absolute;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;gap:10px;pointer-events:auto}
+  .sgpad .nums{display:grid;grid-template-columns:repeat(9,1fr);gap:5px}
+  .sgpad .n{border:0;border-radius:12px;background:#fffdf8;color:#7b4fb0;font:700 24px "Avenir Next","Segoe UI",sans-serif;padding:6px 0;cursor:pointer;box-shadow:0 3px 0 #d8c4ec;display:flex;flex-direction:column;align-items:center}
+  .sgpad .n small{font-size:10px;color:#a48fbf}.sgpad .n.done{opacity:.35}
+  .sgpad .tools{display:flex;justify-content:space-around}
+  .sgpad .t{border:0;background:none;color:#6d5a86;cursor:pointer;display:flex;flex-direction:column;align-items:center;font:600 12px sans-serif}
+  .sgpad .t span{font-size:22px;width:44px;height:44px;border-radius:50%;background:#fffdf8;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 0 #d8c4ec}
+  .sgpad .t.on span{background:#b388eb;color:#fff}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<script src="./lib/kit.js"></script>
+<script src="./game.js"></script>
+</body>
+</html>

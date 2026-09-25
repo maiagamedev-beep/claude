@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<link rel="icon" href="data:,">
+<title>Word Grove</title>
+<style>
+  html,body{margin:0;height:100%;overflow:hidden;background:#dff2e1;touch-action:none;overscroll-behavior:none}
+  canvas{display:block;}
+  #fx{pointer-events:none}
+  :root{--font:"Trebuchet MS","Segoe UI",sans-serif;--ink:#2f4034;--panel:#fdfaf1;--btn:#5caa73;--btnInk:#fff;--btnShadow:#2f6a43;--btnBorder:0;--panelBorder:0;--panelShadow:0 16px 40px rgba(47,64,52,.25);--adBtn:#ffc971;--accent:#ff8fa3;--pill:rgba(47,64,52,.7);--radius:22px;--btnRadius:14px;--logo:#2f6a43;--logo2:#ff8fa3;--logoShadow:0 4px 0 #fdfaf1;--subInk:#2f4034}
+  .kit-btn.ad{color:#2f4034}
+  .wglist{position:absolute;left:50%;transform:translateX(-50%);text-align:center;pointer-events:auto;color:#2f4034}
+  .wglist .theme{font-weight:900;font-size:18px;margin-bottom:6px;letter-spacing:1px;text-transform:uppercase}
+  .wglist .ws{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+  .wglist .ws span{background:#fdfaf1;border:2px solid var(--c);border-radius:10px;padding:3px 8px;font-weight:800;font-size:14px}
+  .wglist .ws span.f{background:var(--c);color:#fff;text-decoration:line-through;opacity:.8}
+  .wglist .tools{display:flex;gap:8px;justify-content:center;margin-top:10px}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<script src="./lib/kit.js"></script>
+<script src="./game.js"></script>
+</body>
+</html>
