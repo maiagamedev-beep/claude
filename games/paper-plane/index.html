@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<link rel="icon" href="data:,">
+<title>Paper Plane</title>
+<style>
+  html,body{margin:0;height:100%;overflow:hidden;background:#bde0fe;touch-action:none;overscroll-behavior:none}
+  canvas{display:block;}
+  #fx{pointer-events:none}
+  :root{--font:"Gill Sans","Trebuchet MS",sans-serif;--ink:#333;--panel:#fffdf7;--btn:#ff8fab;--btnInk:#fff;--btnShadow:#c9184a;--btnBorder:0;--panelBorder:0;--panelShadow:6px 8px 0 rgba(0,0,0,.12);--adBtn:#6fcf97;--accent:#ff8fab;--pill:rgba(0,0,0,.25);--radius:6px;--btnRadius:6px;--logo:#fff;--logo2:#ff8fab;--logoShadow:4px 6px 0 rgba(0,0,0,.15);--subInk:#355070}
+  .pphud{position:absolute;left:0;right:0;top:70px;text-align:center;pointer-events:none;color:#fff;text-shadow:3px 4px 0 rgba(0,0,0,.2)}
+  .pphud b{font:700 64px "Gill Sans","Trebuchet MS",sans-serif}.pphud i{font-style:normal;font-size:24px;margin-left:8px}
+  .pphud small{display:block;font-size:18px;font-weight:700;animation:kitPulse 1s infinite}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<script src="./lib/kit.js"></script>
+<script src="./game.js"></script>
+</body>
+</html>
