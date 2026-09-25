@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<link rel="icon" href="data:,">
+<title>Rooftop Rush</title>
+<style>
+  html,body{margin:0;height:100%;overflow:hidden;background:#9fd8ff;touch-action:none;overscroll-behavior:none}
+  canvas{display:block;position:absolute;left:0;top:0}
+  #fx{pointer-events:none}
+  :root{--font:"Trebuchet MS","Segoe UI",sans-serif;--ink:#1d3557;--panel:#fffdf6;--btn:#ffd23f;--btnInk:#1d3557;--btnShadow:#1d3557;--btnBorder:3px solid #1d3557;--panelBorder:3px solid #1d3557;--panelShadow:0 8px 0 #1d3557;--adBtn:#3ec9a7;--accent:#e63946;--pill:rgba(29,53,87,.85);--radius:20px;--btnRadius:16px}
+  .menu{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;pointer-events:auto;padding:70px 16px 16px;background:linear-gradient(rgba(159,216,255,.2),rgba(29,53,87,.45))}
+  .menu h1{margin:0;display:flex;flex-direction:column;align-items:center;line-height:.9;font:900 clamp(50px,12vw,110px) "Trebuchet MS",sans-serif;transform:rotate(-4deg)}
+  .menu h1 span{color:#ffd23f;-webkit-text-stroke:3px #1d3557;text-shadow:0 7px 0 #1d3557}
+  .menu h1 span+span{color:#e63946;margin-left:1.2em}
+  .sub{margin:0;color:#fff;font-weight:800;text-shadow:0 2px 0 #1d3557}
+  .mrow{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;max-width:560px}
+  .hud{position:absolute;left:50%;top:58px;transform:translateX(-50%);display:flex;gap:8px;align-items:center;pointer-events:none;white-space:nowrap}
+  .hud b{font:900 28px "Trebuchet MS";color:#fff;-webkit-text-stroke:1.5px #1d3557;text-shadow:0 3px 0 #1d3557}
+  .hud span{background:rgba(29,53,87,.8);color:#ffd23f;padding:3px 10px;border-radius:12px;font-weight:900}
+  .hud .mx{color:#fff}.hud .pw{color:#fff;border:2px solid #fff}
+  .fig{display:flex;flex-direction:column;align-items:center}
+  .fig i{width:30px;height:10px;border-radius:5px 5px 0 0}.fig b{width:34px;height:30px;border-radius:6px}.fig u{width:26px;height:24px}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<canvas id="fx"></canvas>
+<script src="./lib/three.min.js"></script>
+<script src="./lib/kit.js"></script>
+<script src="./game.js"></script>
+</body>
+</html>
