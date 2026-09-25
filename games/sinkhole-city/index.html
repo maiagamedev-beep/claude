@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<link rel="icon" href="data:,">
+<title>Sinkhole City</title>
+<style>
+  html,body{margin:0;height:100%;overflow:hidden;background:#bde0fe;touch-action:none;overscroll-behavior:none}
+  canvas{display:block;position:absolute;left:0;top:0;}
+  #fx{pointer-events:none}
+  :root{--font:"Arial Black","Segoe UI",sans-serif;--ink:#1d1d1d;--panel:#fff;--btn:#3a86ff;--btnInk:#fff;--btnShadow:#1d3557;--btnBorder:0;--panelBorder:0;--panelShadow:0 10px 0 #1d3557;--adBtn:#ffbe0b;--accent:#3a86ff;--pill:rgba(29,29,29,.7);--radius:20px;--btnRadius:14px;--logo:#2b2d42;--logo2:#3a86ff;--logoShadow:0 5px 0 #fff;--subInk:#1d1d1d}
+  .kit-btn.ad{color:#1d1d1d}
+  .shboard{position:absolute;right:10px;top:60px;background:rgba(255,255,255,.85);border-radius:12px;padding:6px 10px;font:700 13px "Trebuchet MS",sans-serif;min-width:130px;pointer-events:none}
+  .shboard div{display:flex;justify-content:space-between;gap:10px}.shboard .me{color:#3a86ff}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<canvas id="fx"></canvas>
+<script src="./lib/three.min.js"></script>
+<script src="./lib/kit.js"></script>
+<script src="./game.js"></script>
+</body>
+</html>
