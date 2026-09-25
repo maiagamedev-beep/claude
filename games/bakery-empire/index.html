@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<link rel="icon" href="data:,">
+<title>Bakery Empire</title>
+<!-- The Tribus portal injects its SDK automatically; outside the portal lib/kit.js simulates it. -->
+<style>
+  html,body{margin:0;height:100%;overflow:hidden;background:#f5eedc;touch-action:none;overscroll-behavior:none}
+  canvas{display:block}
+  :root{--font:Georgia,"Times New Roman",serif;--ink:#2b2340;--panel:#f5eedc;--btn:#ffd800;--btnInk:#2b2340;--btnShadow:#0078bf;--btnBorder:3px solid #2b2340;--panelBorder:3px solid #2b2340;--panelShadow:6px 6px 0 #ff48b0;--adBtn:#7fd6ff;--accent:#ff48b0;--pill:#2b2340;--pillInk:#f5eedc;--radius:6px;--btnRadius:6px}
+  .title{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;pointer-events:auto;background:rgba(245,238,220,.55)}
+  .logo{display:flex;flex-direction:column;align-items:center;line-height:.85;transform:rotate(-4deg)}
+  .logo span{font:900 clamp(48px,11vw,110px) Georgia,serif;color:#ff48b0;text-shadow:5px 4px 0 #0078bf;letter-spacing:-2px}
+  .logo span+span{color:#ffd800;-webkit-text-stroke:3px #2b2340;text-shadow:6px 5px 0 #ff48b0}
+  .sub{font:italic 600 18px Georgia,serif;color:#0078bf;margin:0}
+  .shop{position:absolute;pointer-events:auto;background:#f5eedc;border:3px solid #2b2340;box-shadow:6px 6px 0 #0078bf;display:flex;flex-direction:column;overflow:hidden}
+  .shop.side{right:12px;top:64px;bottom:12px;width:min(380px,36vw)}
+  .shop.bottom{left:8px;right:8px;bottom:8px;height:44%}
+  .shead{display:flex;justify-content:space-between;align-items:center;padding:8px 10px;border-bottom:3px dashed #ff48b0;font-size:20px}
+  .buyn{display:flex;gap:4px}
+  .bn{font:700 14px Georgia;border:2px solid #2b2340;background:#fff;padding:4px 8px;cursor:pointer;color:#2b2340}
+  .bn.on{background:#ff48b0;color:#fff}
+  .slist{overflow-y:auto;flex:1;padding:6px}
+  .item{display:flex;align-items:center;gap:8px;padding:6px;margin-bottom:6px;border:2px solid #2b2340;background:#fff;cursor:pointer;position:relative;transition:transform .08s}
+  .item:active{transform:scale(.97)}
+  .item.cant{opacity:.55;filter:saturate(.4)}
+  .item.locked{opacity:.4;pointer-events:none}
+  .item.pulse{animation:pls .3s}
+  @keyframes pls{40%{transform:scale(1.05);background:#ffd800}}
+  .ico{width:48px;height:48px;flex:none;display:flex;align-items:center;justify-content:center;font:900 26px Georgia;color:#ff48b0;background:rgba(255,216,0,.35)}
+  .ico img{width:48px;height:48px}
+  .ico.pin{background:linear-gradient(90deg,transparent 10%,#c98f5b 10% 22%,#e8b98a 22% 78%,#c98f5b 78% 90%,transparent 90%) center/100% 34% no-repeat,rgba(255,72,176,.25)}
+  .info{flex:1;display:flex;flex-direction:column;min-width:0}
+  .info b{font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .info small{font-size:12px;color:#0078bf}
+  .own{font:900 22px Georgia;color:#ff48b0;min-width:30px;text-align:right}
+  .price{font:700 14px Georgia;background:#ffd800;border:2px solid #2b2340;padding:3px 6px;white-space:nowrap}
+  .price small{font-size:11px}
+  .prest{background:#2b2340;color:#ffd800}
+  .prest .info small{color:#ff9ad6}
+  .boostbar{position:absolute;display:flex;gap:8px;align-items:center;pointer-events:auto;flex-wrap:wrap}
+  .boostbar.side{left:12px;bottom:12px}
+  .boostbar.bottom{left:8px;right:8px;bottom:calc(44% + 16px);justify-content:center}
+  .bstat{font:900 16px Georgia;color:#ff48b0;text-shadow:1px 1px 0 #fff}
+  @media (max-height:500px){.shop.bottom{height:50%}}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<script src="./lib/kit.js"></script>
+<script src="./game.js"></script>
+</body>
+</html>
