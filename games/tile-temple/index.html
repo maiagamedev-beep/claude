@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<link rel="icon" href="data:,">
+<title>Tile Temple</title>
+<style>
+  html,body{margin:0;height:100%;overflow:hidden;background:#16382c;touch-action:none;overscroll-behavior:none}
+  canvas{display:block;}
+  #fx{pointer-events:none}
+  :root{--font:Georgia,"Times New Roman",serif;--ink:#3b2a1a;--panel:#fbf6e6;--btn:#3f8f6b;--btnInk:#fbf6e6;--btnShadow:#1f4a37;--btnBorder:0;--panelBorder:4px solid #6b4a2b;--panelShadow:0 10px 0 #3b2a1a;--adBtn:#e0b04a;--accent:#c0392b;--pill:rgba(0,0,0,.35);--radius:14px;--btnRadius:10px;--logo:#fbf6e6;--logo2:#e0b04a;--logoShadow:0 5px 0 #0c2019;--subInk:#fbf6e6}
+  .kit-btn.ad{color:#3b2a1a}
+  .ttbar{position:absolute;left:50%;transform:translateX(-50%);display:flex;gap:8px;pointer-events:auto}
+  .bo{border:0;background:#fbf6e6;border-radius:12px;width:72px;padding:4px;display:flex;flex-direction:column;align-items:center;cursor:pointer;position:relative;font:inherit;color:#3b2a1a;box-shadow:0 4px 0 #6b4a2b}
+  .bo span{font-size:22px}.bo small{font-size:11px}.bo i{position:absolute;top:-8px;right:-6px;background:#c0392b;color:#fff;border-radius:10px;font:900 11px sans-serif;padding:1px 5px;font-style:normal}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<script src="./lib/kit.js"></script>
+<script src="./game.js"></script>
+</body>
+</html>
