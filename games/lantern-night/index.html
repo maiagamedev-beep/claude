@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<link rel="icon" href="data:,">
+<title>Lantern Night</title>
+<style>
+  html,body{margin:0;height:100%;overflow:hidden;background:#0b0d12;touch-action:none;overscroll-behavior:none}
+  canvas{display:block}
+  :root{--font:Georgia,"Palatino Linotype",serif;--ink:#f3e6cf;--panel:#1b1720;--btn:#ffb347;--btnInk:#1b1720;--btnShadow:#7a4a12;--btnBorder:2px solid #ffd79a;--panelBorder:2px solid #ffb347;--panelShadow:0 0 40px rgba(255,179,71,.35);--adBtn:#8fd3ff;--accent:#ffb347;--pill:rgba(20,16,26,.8);--scrim:rgba(0,0,0,.6);--radius:10px;--btnRadius:8px}
+  .kit-row{background:rgba(255,255,255,.06)!important}.kit-cell{background:rgba(255,255,255,.05)!important;border-color:rgba(255,179,71,.3)!important}.kit-cell.on{background:rgba(255,179,71,.2)!important}
+  .menu{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;pointer-events:auto;padding:70px 16px 16px;background:radial-gradient(circle at 50% 40%,rgba(255,179,71,.12),rgba(0,0,0,.55) 60%)}
+  .menu h1{margin:0;display:flex;flex-direction:column;align-items:center;font:italic 900 clamp(52px,12vw,112px)/.9 Georgia,serif;color:#ffb347;text-shadow:0 0 30px rgba(255,179,71,.6)}
+  .menu h1 span{color:#f3e6cf;font-size:.7em;letter-spacing:.3em;font-style:normal;text-shadow:0 0 20px rgba(143,211,255,.5)}
+  .sub{margin:0;color:#d9c7a8}
+  .mrow{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+  .hud{position:absolute;left:0;right:0;top:52px;display:flex;flex-direction:column;align-items:center;gap:6px;pointer-events:none;color:#f3e6cf}
+  .xp{width:min(520px,calc(100% - 24px));height:16px;background:rgba(0,0,0,.6);border:2px solid #ffb347;border-radius:8px;position:relative;overflow:hidden}
+  .xp i{display:block;height:100%;background:linear-gradient(90deg,#8fd3ff,#e8ff8a)}
+  .xp b{position:absolute;inset:0;text-align:center;font-size:11px;line-height:13px;color:#fff;text-shadow:0 1px 2px #000}
+  .row{display:flex;gap:14px;font-weight:700;text-shadow:0 2px 3px #000}
+  .ups{display:flex;flex-direction:column;gap:8px}
+  .up{border:2px solid #ffb347;background:rgba(255,179,71,.08);color:#f3e6cf;border-radius:10px;padding:10px;text-align:left;font:inherit;cursor:pointer;display:flex;flex-direction:column;position:relative}
+  .up:hover{background:rgba(255,179,71,.2)}
+  .up.wpn{border-color:#8fd3ff}
+  .up i{position:absolute;right:10px;top:8px;font-style:normal;font-size:12px;color:#ffb347}
+  .up b{font-size:17px}.up small{opacity:.8}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<script src="./lib/kit.js"></script>
+<script src="./game.js"></script>
+</body>
+</html>

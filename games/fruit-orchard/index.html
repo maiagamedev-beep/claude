@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<link rel="icon" href="data:,">
+<title>Fruit Orchard</title>
+<style>
+  html,body{margin:0;height:100%;overflow:hidden;background:#f7efdc;touch-action:none;overscroll-behavior:none}
+  canvas{display:block}
+  :root{--font:"Palatino Linotype",Palatino,Georgia,serif;--ink:#5a3d2b;--panel:#fbf5e6;--btn:#d7263d;--btnInk:#fff;--btnShadow:#7a1422;--btnBorder:0;--panelBorder:3px solid #b9895b;--panelShadow:0 10px 0 #8a6340;--adBtn:#3a9d4a;--accent:#d7263d;--pill:rgba(90,61,43,.85);--radius:22px;--btnRadius:999px;--logo:#d7263d;--logo2:#3a9d4a;--logoShadow:0 5px 0 #f7efdc,0 9px 0 #b9895b;--subInk:#5a3d2b;--titleFont:"Palatino Linotype",Georgia,serif}
+  .kit-btn.ad{color:#fff}
+  .m3hud{position:absolute;left:50%;transform:translateX(-50%);display:flex;gap:8px;width:min(600px,calc(100% - 20px));pointer-events:none}
+  .m3hud .c{flex:1;background:#fbf5e6;border:3px solid #b9895b;border-radius:16px;text-align:center;padding:4px;display:flex;flex-direction:column;box-shadow:0 5px 0 #8a6340}
+  .m3hud .goal{flex:2}.m3hud small{font-size:12px;opacity:.7}.m3hud b{font-size:22px;display:flex;align-items:center;justify-content:center;gap:4px}
+  .m3hud .gi{width:26px;height:26px}.m3hud .low{color:#d7263d;animation:kitPulse .6s infinite}
+  .m3bar{position:absolute;left:50%;transform:translateX(-50%);display:flex;gap:8px;pointer-events:auto}
+  .bo{border:3px solid #b9895b;background:#fbf5e6;border-radius:16px;width:74px;padding:4px;display:flex;flex-direction:column;align-items:center;cursor:pointer;position:relative;font:inherit;color:#5a3d2b;box-shadow:0 4px 0 #8a6340}
+  .bo span{font-size:24px}.bo small{font-size:11px}.bo i{position:absolute;top:-8px;right:-6px;background:#d7263d;color:#fff;border-radius:10px;font-style:normal;font-size:12px;padding:0 6px;min-width:18px}
+  .bo.on{background:#ffe08a}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<script src="./lib/kit.js"></script>
+<script src="./game.js"></script>
+</body>
+</html>

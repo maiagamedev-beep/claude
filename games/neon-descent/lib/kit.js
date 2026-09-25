@@ -1019,3 +1019,109 @@
     });
   };
 })();
+
+/* ---------------- Standard screens (menu, end of round, shop, upgrades, level grid) ---------------- */
+(function () {
+  const K = window.Kit;
+  const el = (t, c, h) => K.el(t, c, h);
+  const center = (pnl) => { const r = pnl.panel.getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2 }; };
+  K.std = {
+    // o: {title (html), sub, onPlay, buttons:[node], playLabel}
+    menu(o) {
+      let m = document.querySelector('.kit-menu');
+      if (!m) { m = el('div', 'kit-menu'); K.ui.root.appendChild(m); }
+      m.style.display = '';
+      m.innerHTML = `<div class="kit-logo">${o.title}</div>${o.sub ? `<p class="kit-sub">${o.sub}</p>` : ''}`;
+      const play = K.ui.btn(o.playLabel || K.t('play'), 'big', () => { m.style.display = 'none'; K.meta.setMenuButtonsVisible(false); o.onPlay(); });
+      play.dataset.play = '1'; m.appendChild(play);
+      if (o.buttons && o.buttons.length) { const row = el('div', 'kit-mrow'); o.buttons.forEach((b) => row.appendChild(b)); m.appendChild(row); }
+      K.meta.setMenuButtonsVisible(true);
+      K.game.stop();
+      K.meta.showPending();
+      return m;
+    },
+    hideMenu() { const m = document.querySelector('.kit-menu'); if (m) m.style.display = 'none'; K.meta.setMenuButtonsVisible(false); },
+    // o: {title, text, rows:[[label,value]], coins, gems, newBest, revive:fn, reviveLabel, mult(2|3), next:{label, fn}, restart:fn, menu:fn, win}
+    end(o) {
+      K.game.stop();
+      if (o.newBest || o.win) K.game.happy();
+      const body = (o.newBest ? `<div class="kit-big kit-nb">${K.t('newBest')}</div>` : '') + (o.text ? `<p>${o.text}</p>` : '') +
+        (o.rows || []).map((r) => `<div class="kit-row"><div class="grow">${r[0]}</div><b>${r[1]}</b></div>`).join('') +
+        `<div class="kit-big">${K.icon.coin} ${K.fmt(o.coins || 0)}${o.gems ? ' &nbsp;' + K.icon.gem + ' ' + o.gems : ''}</div>`;
+      const pnl = K.ui.panel({ title: o.title || (o.win ? K.t(['Victory!', 'Vitória!']) : K.t('gameOver')), body, closable: false });
+      let paid = false;
+      const pay = (m) => { if (paid) return; paid = true; if (o.coins) K.meta.addCoins(o.coins * m, center(pnl)); if (o.gems) K.meta.addGems(o.gems * m, center(pnl)); };
+      const leave = (fn, ad) => { pay(1); pnl.close(); K.meta.showPending(() => (ad ? K.ads.midgame().then(fn) : fn())); };
+      if (o.revive) pnl.foot.appendChild(K.ui.adBtn(o.reviveLabel || K.t('revive'), () => { pnl.close(); o.revive(); }));
+      if (o.coins || o.gems) pnl.foot.appendChild(K.ui.adBtn(K.t((o.mult || 2) === 3 ? 'x3' : 'x2'), (b) => { pay(o.mult || 2); b.remove(); }));
+      if (o.next) pnl.foot.appendChild(K.ui.btn(o.next.label || K.t(['Next', 'Próximo']), '', () => leave(o.next.fn, true)));
+      if (o.restart) pnl.foot.appendChild(K.ui.btn(o.next ? K.t(['Retry', 'Repetir']) : K.t('restart'), o.next ? 'ghost' : '', () => leave(o.restart, true)));
+      if (o.menu) pnl.foot.appendChild(K.ui.btn(K.t('menu'), 'ghost', () => leave(o.menu, false)));
+      pnl.panel.appendChild(pnl.foot);
+      return pnl;
+    },
+    // items: [{id, name, html (preview), price?, gems?}], state: {owned:[], get(), set(id)}
+    shop(title, items, state) {
+      const body = el('div', 'kit-grid');
+      const pnl = K.ui.panel({ title, body, cls: 'wide' });
+      const render = () => {
+        body.innerHTML = '';
+        items.forEach((it) => {
+          const own = state.owned.includes(it.id) || (!it.price && !it.gems);
+          const cell = el('div', 'kit-cell' + (state.get() === it.id ? ' on' : ''), `${it.html || ''}<div>${it.name || ''}</div>`);
+          const eq = () => { if (!state.owned.includes(it.id)) state.owned.push(it.id); state.set(it.id); K.save.mark(); render(); state.onChange && state.onChange(); };
+          cell.appendChild(own ? K.ui.btn(state.get() === it.id ? '✓' : K.t('equip'), 'sm', eq)
+            : it.gems ? K.ui.btn(K.icon.gem + ' ' + it.gems, 'sm', () => { if (K.meta.spendGems(it.gems)) eq(); })
+              : K.ui.btn(K.icon.coin + ' ' + K.fmt(it.price), 'sm', () => { if (K.meta.spend(it.price)) eq(); }));
+          body.appendChild(cell);
+        });
+      };
+      render();
+      return pnl;
+    },
+    // defs: [{id, n:[en,pt], max, base, growth?}], up: object of levels
+    upgrades(title, defs, up) {
+      const body = el('div');
+      const pnl = K.ui.panel({ title, body });
+      const render = () => {
+        body.innerHTML = '';
+        defs.forEach((u) => {
+          const l = up[u.id] || 0, cost = Math.round(u.base * Math.pow(u.growth || 1.55, l));
+          const row = el('div', 'kit-row', `<div class="grow"><b>${K.t(u.n)}</b><div class="kit-bar"><i style="width:${(100 * l) / u.max}%"></i></div></div>`);
+          row.appendChild(l >= u.max ? el('b', '', K.t('max')) : K.ui.btn(K.icon.coin + ' ' + K.fmt(cost), 'sm', () => { if (K.meta.spend(cost)) { up[u.id] = l + 1; K.save.mark(); K.meta.track('upg', 1); render(); } }));
+          body.appendChild(row);
+        });
+      };
+      render();
+      return pnl;
+    },
+    levels(title, n, unlocked, stars, onPick, label) {
+      const body = el('div', 'kit-lvgrid');
+      const pnl = K.ui.panel({ title, body, cls: 'wide' });
+      for (let i = 0; i < n; i++) {
+        const b = el('button', 'kit-lv' + (i > unlocked ? ' lock' : '') + (i === unlocked ? ' cur' : ''), `<b>${i + 1}</b>${label ? `<small>${label(i)}</small>` : ''}<i>${'★'.repeat((stars && stars[i]) || 0)}</i>`);
+        b.onclick = () => { if (i > unlocked) return K.audio.play('error'); K.audio.play('click'); pnl.close(); onPick(i); };
+        body.appendChild(b);
+      }
+      return pnl;
+    },
+    confetti(colors, n) { const W = innerWidth, H = innerHeight; for (let i = 0; i < (n || 5); i++) setTimeout(() => K.fx.burst(K.rand(0, W), K.rand(0, H * 0.5), { n: 28, colors, speed: 380, shape: 'star', size: 8, life: 1.2 }), i * 120); },
+  };
+  const st = document.createElement('style');
+  st.textContent = `
+  .kit-menu{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;pointer-events:auto;padding:70px 16px 16px;background:var(--menuBg,transparent)}
+  .kit-logo{text-align:center;font:900 clamp(48px,11vw,104px)/.9 var(--titleFont,var(--font,sans-serif));color:var(--logo,#fff);text-shadow:var(--logoShadow,0 6px 0 rgba(0,0,0,.35));letter-spacing:-1px}
+  .kit-logo span{display:block;color:var(--logo2,var(--accent,#ffd34d))}
+  .kit-sub{margin:0;font-weight:800;color:var(--subInk,inherit);text-shadow:var(--subShadow,none)}
+  .kit-mrow{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;max-width:600px}
+  .kit-nb{color:var(--accent,#e63946)}
+  .kit-lvgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(58px,1fr));gap:8px}
+  .kit-lv{border:2px solid rgba(0,0,0,.3);border-radius:10px;background:rgba(255,255,255,.7);font:inherit;padding:6px 2px;display:flex;flex-direction:column;align-items:center;cursor:pointer;color:#222}
+  .kit-lv b{font-size:19px}.kit-lv small{font-size:10px;opacity:.7}.kit-lv i{color:#e0a526;font-style:normal;min-height:15px}
+  .kit-lv.cur{background:var(--accent,#ffd34d);color:#fff}.kit-lv.lock{opacity:.35}
+  .kit-hud{position:absolute;left:50%;top:58px;transform:translateX(-50%);display:flex;gap:10px;align-items:center;pointer-events:none;white-space:nowrap;font-weight:900;color:var(--hudInk,#fff);text-shadow:var(--hudShadow,0 2px 0 rgba(0,0,0,.5))}
+  .kit-hud .big{font-size:30px}
+  .kit-hud .chip{background:var(--pill,rgba(0,0,0,.45));color:var(--pillInk,#fff);padding:3px 10px;border-radius:12px;font-size:16px;text-shadow:none}
+  `;
+  document.head.appendChild(st);
+})();
