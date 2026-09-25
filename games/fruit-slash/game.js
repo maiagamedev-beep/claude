@@ -141,6 +141,7 @@
       if (frenzy > 0) { ctx.fillStyle = `rgba(255,209,102,${0.1 + Math.sin(tt * 10) * 0.05})`; ctx.fillRect(0, 0, W, H); }
       K.fx.drawFlash(ctx, W, H);
     });
+    K.debug = { burst() { for (let i = 0; i < 7; i++) { launch(i === 3 ? 'bomb' : 'fruit', W * (0.15 + i * 0.11)); const it = items[items.length - 1]; it.y = H * K.rand(0.25, 0.6); it.vy = K.rand(-200, 100); } } };
     K.fit(cv, (w, h, d) => { W = w; H = h; DPR = d; S = Math.max(0.8, Math.min(1.4, Math.min(w, h) / 600)); });
     K.music.set({ bpm: 116, chords: [[62, 65, 69], [60, 64, 67], [58, 62, 65], [57, 61, 64]], bass: true, arp: [1, 0, 0, 1, 0, 1, 0, 0], arpWave: 'square', drums: { k: [1, 0, 0, 0, 1, 0, 0, 1], s: [0, 0, 1, 0, 0, 0, 1, 0], h: [1, 0, 1, 0, 1, 0, 1, 0] } });
     showMenu();

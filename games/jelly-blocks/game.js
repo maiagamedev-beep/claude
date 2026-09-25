@@ -213,6 +213,7 @@
       K.fx.drawFlash(ctx, W, H);
     });
 
+    K.debug = { fill() { for (let i = 0; i < N * N; i++) if (Math.random() < 0.45 && (i % N) !== 3 && ((i / N) | 0) !== 5) grid[i] = { col: K.pick(COLS), s: 1 }; } };
     K.fit(cv, (w, h, d) => { W = w; H = h; DPR = d; layout(); for (const k in cache) delete cache[k]; });
     K.music.set({ bpm: 100, chords: [[60, 64, 67, 71], [57, 60, 64, 67], [62, 65, 69, 72], [55, 59, 62, 65]], bass: true, pad: true, arp: [1, 0, 1, 1, 0, 1, 0, 1], arpWave: 'sine', drums: { k: [1, 0, 0, 0, 1, 0, 0, 0], h: [0, 1, 0, 1, 0, 1, 0, 1] } });
     showMenu();

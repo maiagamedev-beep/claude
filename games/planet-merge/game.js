@@ -129,6 +129,7 @@
       }
       K.fx.draw(ctx); ctx.restore(); K.fx.drawFlash(ctx, W, H);
     });
+    K.debug = { fill() { for (let i = 0; i < 16; i++) { const k = K.randi(0, 7), r = rad(k), x = jx + r + Math.random() * (JW - 2 * r), y = jy + JH - r - Math.random() * JH * 0.6; balls.push({ k, x, y, px: x, py: y, s: 1, age: 0 }); } } };
     K.fit(cv, (w, h, d) => { W = w; H = h; DPR = d; const oj = { jx, jy, JW }; layout(); if (oj.JW && balls.length) { const f = JW / oj.JW; balls.forEach((b) => { b.x = jx + (b.x - oj.jx) * f; b.y = jy + (b.y - oj.jy) * f; b.px = b.x; b.py = b.y; }); } });
     K.music.set({ bpm: 74, chords: [[60, 64, 67, 71], [65, 69, 72, 76], [62, 65, 69, 72], [67, 71, 74, 77]], pad: true, padWave: 'sine', arp: [1, 0, 0, 1, 0, 0, 1, 0], arpWave: 'sine', bass: true });
     showMenu();
