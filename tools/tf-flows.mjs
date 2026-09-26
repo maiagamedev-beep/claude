@@ -42,7 +42,7 @@ await p.click('#shClose'); await p.waitForTimeout(300);
 // offline earnings on reload
 await p.evaluate(() => { const S = TF.S(); S.lines[0].lvl = 50; S.lines[0].mgr = true; TF.save(); });
 // leave the game (it saves on pagehide), then pretend 3 hours passed
-await p.goto('http://localhost:8134/assets/CREDITS.txt');
+await p.goto('http://localhost:8134/licenses/CREDITS.txt');
 await p.evaluate(() => { const raw = JSON.parse(localStorage.getItem('tasty_factory_v1')); raw.s.t = Date.now() - 3 * 3600e3; localStorage.setItem('tasty_factory_v1', JSON.stringify(raw)); });
 errs.length = 0; // the plain-text page asks for a favicon; not part of the game
 await boot();
