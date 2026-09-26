@@ -1,0 +1,6 @@
+Tasty Factory - credits
+
+3D models: Kenney (www.kenney.nl) - Factory Kit, Food Kit, Mini Characters, Mini Market, Car Kit. License: CC0 1.0 (public domain).
+UI icons: Kenney Game Icons. License: CC0 1.0.
+Fonts: Lilita One, Nunito - SIL Open Font License 1.1 (see OFL-*.txt in assets/fonts).
+Code, sound effects and music: original.

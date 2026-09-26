@@ -6,7 +6,7 @@ in code; Tasty Factory uses CC0 3D models from Kenney.
 
 | Game | Genre | View | Art style | Upload zip |
 |---|---|---|---|---|
-| [Tasty Factory](store/tasty-factory/README.md) | Idle / incremental tycoon | 3D | Kenney CC0 low-poly kits, warm pastel factory | `dist/tasty-factory.zip` (~1 MB) |
+| [Tasty Factory](store/tasty-factory/README.md) | Idle / incremental tycoon | 3D | Kenney CC0 low-poly kits, warm pastel factory | `dist/tasty-factory.zip` (~1.2 MB) |
 | [Noodle Arena](store/noodle-arena/README.md) | Snake .io arena | 2D | Gouache paint on warm paper | `dist/noodle-arena.zip` |
 
 ### Tasty Factory
@@ -25,7 +25,9 @@ node tools/tf-play.mjs 390x780 6   # click-driven playtest bot
 node tools/tf-cover.mjs            # store covers
 ```
 Assets: Kenney Factory/Food/Mini Characters/Mini Market/Car kits and Game Icons (CC0), fonts Lilita One and
-Nunito (SIL OFL) — see `games/tasty-factory/assets/CREDITS.txt`.
+Nunito (SIL OFL) — see `games/tasty-factory/licenses/`. The build embeds every model, texture, icon and font into
+`index.html`/`game.js`, so the game also runs when `index.html` is opened directly from disk (file://).
+Source assets live in `src/tasty-factory/assets/`.
 
 The 39 earlier prototypes did not reach the quality bar and were moved to `descartados/`
 (`descartados/games`, `descartados/store`, `descartados/dist`). They are kept for reference only and
@@ -36,7 +38,7 @@ Each `store/<game>/` folder has the store description, the "How to play" text (E
 
 ## Portal requirements checklist
 
-- **Size / load:** Noodle Arena ~35 KB zipped, Tasty Factory ~1 MB zipped (three.js bundled, 75 small glTF models). Everything loads in well under a second locally.
+- **Size / load:** Noodle Arena ~35 KB zipped, Tasty Factory ~1.2 MB zipped (three.js bundled, 75 small glTF models). Everything loads in well under a second locally.
 - **Two clicks to play:** the first screen has a big **Play** button; one click starts a round.
 - **No scrollbars, adapts to any frame size and fullscreen:** full-window canvas, resized on `resize`/`fullscreenchange`; portrait layouts on mobile.
 - **Touch controls** in every game (swipe, drag joystick, hold zones or on-screen buttons).
