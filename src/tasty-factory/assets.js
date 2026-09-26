@@ -1,0 +1,91 @@
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { clone as skClone } from 'three/examples/jsm/utils/SkeletonUtils.js';
+import { mergeGeometries } from 'three/examples/jsm/utils/BufferGeometryUtils.js';
+
+const FACTORY = ['conveyor-long', 'conveyor-long-stripe', 'conveyor', 'conveyor-stripe', 'hopper-round', 'hopper-high-round', 'hopper-square',
+  'machine', 'machine-window', 'machine-fortified', 'machine-window-bar', 'robot-arm-a', 'robot-arm-b', 'piston-round', 'scanner-high',
+  'scanner-low', 'cog-a', 'cog-b', 'box-small', 'box-large', 'box-long', 'warning-orange', 'cone', 'screen-hanging-small', 'screen-small',
+  'structure-wall', 'structure-window', 'structure-window-wide', 'structure-tall', 'structure-medium', 'structure-short',
+  'structure-yellow-short', 'structure-doorway-wide', 'door-wide-open', 'pipe-glass-large', 'pipe-large', 'pipe-large-bend', 'crane',
+  'button-floor-round', 'lever-single', 'conveyor-corner', 'conveyor-stripe-corner', 'hopper-high-square'];
+const FOOD = ['cookie-chocolate', 'donut-sprinkles', 'cupcake', 'croissant', 'waffle', 'burger-cheese', 'pizza', 'maki-salmon', 'sundae',
+  'cake-birthday', 'bag', 'egg', 'strawberry', 'bag-flat', 'honey', 'meat-patty', 'tomato', 'fish', 'ice-cream-scoop-mint', 'cherries'];
+const CHARS = ['employee', 'character-male-a', 'character-male-c', 'character-female-a', 'character-female-c', 'character-male-e', 'character-female-e'];
+const CARS = ['delivery', 'truck', 'van'];
+
+export const LIST = [
+  ...FACTORY.map((n) => ['factory', n]), ...FOOD.map((n) => ['food', n]), ...CHARS.map((n) => ['chars', n]), ...CARS.map((n) => ['car', n]),
+];
+
+const gltfs = {};
+const geoCache = {};
+
+export async function loadAll(onProgress) {
+  const manager = new THREE.LoadingManager();
+  const loader = new GLTFLoader(manager);
+  let done = 0;
+  await Promise.all(LIST.map(([dir, name]) => new Promise((res) => {
+    loader.load(`assets/${dir}/${name}.glb`, (g) => {
+      g.scene.traverse((o) => {
+        if (o.isMesh) {
+          o.castShadow = true; o.receiveShadow = true;
+          const m = o.material; if (m && m.map) { m.map.anisotropy = 4; }
+          if (m) { m.metalness = 0; m.roughness = Math.max(0.55, m.roughness ?? 0.7); }
+        }
+      });
+      gltfs[name] = g; done++; onProgress && onProgress(done / LIST.length); res();
+    }, undefined, () => { done++; onProgress && onProgress(done / LIST.length); res(); });
+  })));
+}
+
+export const has = (name) => !!gltfs[name];
+
+// Static prop: shares geometry and material with the loaded model.
+export function prop(name) {
+  const g = gltfs[name];
+  if (!g) return new THREE.Group();
+  return g.scene.clone(true);
+}
+
+// Character with its own skeleton and animation mixer.
+export function character(name) {
+  const g = gltfs[name];
+  const obj = skClone(g.scene);
+  obj.traverse((o) => { if (o.isMesh) { o.castShadow = true; o.receiveShadow = false; o.frustumCulled = false; } });
+  const mixer = new THREE.AnimationMixer(obj);
+  const clips = {};
+  for (const c of g.animations) clips[c.name] = c;
+  let cur = null;
+  const play = (n, fade = 0.25) => {
+    const clip = clips[n] || clips.idle; if (!clip) return;
+    const a = mixer.clipAction(clip);
+    if (cur === a) return;
+    a.reset().fadeIn(fade).play();
+    if (cur) cur.fadeOut(fade);
+    cur = a;
+  };
+  return { obj, mixer, play, clips };
+}
+
+// Whole model merged into one geometry (for InstancedMesh), normalized to a footprint size.
+export function mergedGeo(name, size = 0.4) {
+  const key = name + ':' + size;
+  if (geoCache[key]) return geoCache[key];
+  const g = gltfs[name];
+  const parts = []; let mat = null;
+  g.scene.updateMatrixWorld(true);
+  g.scene.traverse((o) => {
+    if (!o.isMesh) return;
+    const geo = o.geometry.clone(); geo.applyMatrix4(o.matrixWorld);
+    for (const k of Object.keys(geo.attributes)) if (!['position', 'normal', 'uv'].includes(k)) geo.deleteAttribute(k);
+    parts.push(geo.index ? geo.toNonIndexed() : geo); mat = mat || o.material;
+  });
+  const geo = mergeGeometries(parts, false);
+  geo.computeBoundingBox();
+  const b = geo.boundingBox, s = size / Math.max(b.max.x - b.min.x, b.max.z - b.min.z);
+  geo.translate(-(b.max.x + b.min.x) / 2, -b.min.y, -(b.max.z + b.min.z) / 2);
+  geo.scale(s, s, s);
+  geo.computeBoundingSphere();
+  return (geoCache[key] = { geo, mat });
+}

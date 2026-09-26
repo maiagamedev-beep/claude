@@ -1,13 +1,33 @@
 # Tribus game pack
 
-Original browser games built for the Tribus Games portal. All art is drawn in code and all sound is
-synthesized with WebAudio, so there are **no third-party assets** and nothing is loaded from external servers.
+Original browser games built for the Tribus Games portal. Sound and music are synthesized with WebAudio and
+every file ships inside the game folder, so nothing is loaded from external servers. Noodle Arena draws all art
+in code; Tasty Factory uses CC0 3D models from Kenney.
 
 | Game | Genre | View | Art style | Upload zip |
 |---|---|---|---|---|
+| [Tasty Factory](store/tasty-factory/README.md) | Idle / incremental tycoon | 3D | Kenney CC0 low-poly kits, warm pastel factory | `dist/tasty-factory.zip` (~1 MB) |
 | [Noodle Arena](store/noodle-arena/README.md) | Snake .io arena | 2D | Gouache paint on warm paper | `dist/noodle-arena.zip` |
 
-The other 39 prototypes did not reach the quality bar and were moved to `descartados/`
+### Tasty Factory
+Ten production lines (cookies → party cakes) that visibly grow as they level up (robot arms, scanners, striped
+belts, cogs), animated managers, workers and a delivery truck. Systems: tap-to-bake, level milestones (speed ×2),
+managers (automation + offline earnings), 66 profit upgrades, golden crates and sugar frenzy, a goal chain with
+rewards, prestige (Chef Stars, +2% each) with star perks, and optional rewarded boosts (Rush ×2, Time warp,
+Crate of parts, Welcome back ×2). Source lives in `src/tasty-factory/` and is bundled with esbuild:
+
+```
+npm i three@0.186 esbuild playwright-core   # once
+tools/tf-build.sh                  # bundle src/tasty-factory -> games/tasty-factory/game.js and dist zip
+node tools/tf-sim.mjs 120 75       # pacing simulation (minutes, prestige at minute 75)
+node tools/tf-flows.mjs            # prestige, boosts, offline earnings, reset checks
+node tools/tf-play.mjs 390x780 6   # click-driven playtest bot
+node tools/tf-cover.mjs            # store covers
+```
+Assets: Kenney Factory/Food/Mini Characters/Mini Market/Car kits and Game Icons (CC0), fonts Lilita One and
+Nunito (SIL OFL) — see `games/tasty-factory/assets/CREDITS.txt`.
+
+The 39 earlier prototypes did not reach the quality bar and were moved to `descartados/`
 (`descartados/games`, `descartados/store`, `descartados/dist`). They are kept for reference only and
 should not be uploaded.
 
@@ -16,7 +36,7 @@ Each `store/<game>/` folder has the store description, the "How to play" text (E
 
 ## Portal requirements checklist
 
-- **Size / load:** ~35 KB zipped. Everything loads in well under a second locally.
+- **Size / load:** Noodle Arena ~35 KB zipped, Tasty Factory ~1 MB zipped (three.js bundled, 75 small glTF models). Everything loads in well under a second locally.
 - **Two clicks to play:** the first screen has a big **Play** button; one click starts a round.
 - **No scrollbars, adapts to any frame size and fullscreen:** full-window canvas, resized on `resize`/`fullscreenchange`; portrait layouts on mobile.
 - **Touch controls** in every game (swipe, drag joystick, hold zones or on-screen buttons).
