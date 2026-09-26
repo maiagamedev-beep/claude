@@ -120,7 +120,7 @@ export class World {
     this.hazard = hz; hz.position.set(X_SHIP + 0.75, 0.005, 0); scene.add(hz);
 
     // shipping conveyor built lazily as lines unlock
-    this.ship = new THREE.Group(); scene.add(this.ship); this.shipLen = 0;
+    this.ship = new THREE.Group(); scene.add(this.ship); this.shipLen = -1;
     this.shipItems = [];
 
     for (let i = 0; i < nLines; i++) this.lines.push(this.makeLine(i));

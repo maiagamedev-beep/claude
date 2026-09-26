@@ -2,7 +2,7 @@ const SUF = ['', 'K', 'M', 'B', 'T', 'Qa', 'Qi', 'Sx', 'Sp', 'Oc', 'No', 'Dc', '
 export function fmt(n, dec = 2) {
   if (!isFinite(n)) return '∞';
   if (n < 0) return '-' + fmt(-n, dec);
-  if (n < 1000) return n < 10 && n % 1 ? n.toFixed(1) : Math.floor(n).toString();
+  if (n < 1000) return n < 10 && n % 1 ? n.toFixed(1).replace(/\.0$/, '') : Math.floor(n).toString();
   let e = Math.floor(Math.log10(n) / 3);
   let v = n / Math.pow(1000, e);
   if (v >= 999.995) { v /= 1000; e++; }
@@ -69,6 +69,7 @@ const S = {
   perk_start: ['Starting funds', 'Capital inicial'], perk_start_d: ['Start each factory with more cash', 'Comece cada fábrica com mais dinheiro'],
   perk_profit: ['Secret recipe', 'Receita secreta'], perk_profit_d: ['All profits ×2', 'Todo lucro ×2'],
   max: ['MAX', 'MÁX'],
+  buy: ['buy', 'comprar'],
   rushTitle: ['Rush hour', 'Hora do rush'],
   rushDesc: ['All profits ×2 for {m} minutes (stacks up to 4h).', 'Todo lucro ×2 por {m} minutos (acumula até 4h).'],
   warpTitle: ['Time warp', 'Salto no tempo'],
